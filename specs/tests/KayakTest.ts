@@ -1,7 +1,8 @@
 // import {KayakPOM} from '../pages/KayakPOM'
 
-import { browser, element, by } from "protractor"
-import { BrowserStack } from "protractor/built/driverProviders"
+import { parse } from "path"
+import { browser, element, by, ExpectedConditions } from "protractor"
+// import { BrowserStack } from "protractor/built/driverProviders"
 
 const KayakPOM = require('../pages/KayakPOM')
 describe('Kayak Flight Test', function(){
@@ -131,5 +132,36 @@ describe('Kayak Flight Test', function(){
         KayakPOM.setTravelLabel()
         let result = await KayakPOM.getTravelLabelValue()
         expect(result).toBe('6 Travelers')
+    })
+    //step 13
+    it('Check Cheap Best Quick', async function(){
+        KayakPOM.setDestination()
+        KayakPOM.clickDestination()
+        browser.sleep(1000)
+        KayakPOM.setDestinationAirport()
+        KayakPOM.sendDestinationAirportValue('Paris (PAR)')
+        browser.sleep(2000)
+        KayakPOM.setDestinationOpt()
+        KayakPOM.clickDestinationOpt()
+        browser.sleep(1000)
+        KayakPOM.setSearchBtn()
+        KayakPOM.clickSearchBtn()
+        let e = KayakPOM.setCheapestPrice()
+        browser.wait(ExpectedConditions.presenceOf(e),50000).then(async ()=>{
+            browser.sleep(6000)
+            let cheapestPrice :string = await KayakPOM.getCheapestPrice()
+            const cheapestPriceResult:Number = parseInt(cheapestPrice.slice(1,))
+            KayakPOM.setBestPrice()
+            const bestPrice:string = await KayakPOM.getBestPrice()
+            const bestPriceResult:Number = parseInt(bestPrice.slice(1,))
+            KayakPOM.setQuickestPrice()
+            const quickestPrice:string = await KayakPOM.getQuickestPrice()
+            const quickestPriceResult = parseInt(quickestPrice.slice(1,))
+            browser.sleep(2000)
+            console.log('cheapestPrice=> ',cheapestPriceResult)
+            console.log('bestPrice=> ',bestPriceResult)
+            console.log('quickestPrice',quickestPriceResult)
+            expect(cheapestPriceResult < bestPriceResult && cheapestPriceResult < quickestPriceResult).toBeTruthy()
+        })
     })
 })

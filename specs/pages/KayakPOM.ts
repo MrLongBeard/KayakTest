@@ -23,6 +23,14 @@ class KayakPOM {
   originOpt:any
   childCountIncreaseBtn: any
   searchBtn: any
+  cheapestPrice: any
+  cheapestTime: any
+  bestPrice: any
+  bestTime: any
+  quickestTime: any
+  quickestPrice: any
+  destinationAirport: any
+  destinationOpt:any
   constructor() {}
   setFlightTab() {
     this.flightTab = element(
@@ -47,7 +55,10 @@ class KayakPOM {
   }
   setDestination() {
     // this.destination = element(by.xpath("//*[@class='keel-grid _icA _ica _icB _icb _icC _iyY _icc _iaA _icD _ib9 _iy1 _iAO _iaO _iaP _iyF _iAN']/div[3]/div/input"))
-    this.destination = element(by.name("destinationcode"));
+    this.destination = element(by.xpath("//div[contains(@id,'destination-airport-display')]"));
+  }
+  clickDestination(){
+      this.destination.click()
   }
   isDestinationDisplayed() {
     return this.destination.isDisplayed();
@@ -170,6 +181,54 @@ class KayakPOM {
   }
   clickSearchBtn(){
       this.searchBtn.click()
+  }
+  setCheapestPrice(){
+     return this.cheapestPrice = element(by.xpath("//*[contains(@id,'tabs')]/a[1]/div/div/div/div[2]/span[1]"))
+  }
+  async getCheapestPrice(){
+      return await this.cheapestPrice.getText()
+  }
+  setCheapestTime(){
+      this.cheapestTime = element(by.xpath("//*[contains(@id,'tabs')]/a[1]/div/div/div/div[2]/span[2]"))
+  }
+  async getCheapestTime(){
+    return await this.cheapestPrice.getText()
+  }
+  setBestPrice(){
+      this.bestPrice = element(by.xpath("//*[contains(@id,'tabs')]/a[2]/div/div/div/div[2]/span[1]"))
+  }
+  async getBestPrice(){
+      return await this.bestPrice.getText() 
+  }
+  setBestTime(){
+      this.bestTime = element(by.xpath("//*[contains(@id,'tabs')]/a[2]/div/div/div/div[2]/span[2]"))
+  }
+  async getBestTime(){
+      return await this.bestTime.getText()
+  }
+  setQuickestTime(){
+      this.quickestTime = element(by.xpath("//*[contains(@id,'tabs')]/a[3]/div/div/div/div[2]/span[2]"))
+  }
+  async getQuickestTime(){
+      return await this.quickestTime.getText()
+  }
+  setQuickestPrice(){
+      this.quickestPrice = element(by.xpath("//*[contains(@id,'tabs')]/a[3]/div/div/div/div[2]/span[1]"))
+  }
+  async getQuickestPrice(){
+      return await this.quickestPrice.getText()
+  }
+  setDestinationAirport(){
+      this.destinationAirport = element(by.xpath("//input[contains(@id,'destination-airport')]"))
+  }
+  sendDestinationAirportValue(value:string){
+    this.destinationAirport.sendKeys(value)
+  }
+  setDestinationOpt(){
+      this.destinationOpt = element(by.xpath("//div[contains(@id,'destination-airport-smartbox-dropdown')]/ul/li[1]"))
+  }
+  clickDestinationOpt(){
+      this.destinationOpt.click()
   }
 }
 // export default new KayakPOM()

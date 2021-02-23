@@ -68,7 +68,10 @@ var KayakPOM = /** @class */ (function () {
     };
     KayakPOM.prototype.setDestination = function () {
         // this.destination = element(by.xpath("//*[@class='keel-grid _icA _ica _icB _icb _icC _iyY _icc _iaA _icD _ib9 _iy1 _iAO _iaO _iaP _iyF _iAN']/div[3]/div/input"))
-        this.destination = protractor_1.element(protractor_1.by.name("destinationcode"));
+        this.destination = protractor_1.element(protractor_1.by.xpath("//div[contains(@id,'destination-airport-display')]"));
+    };
+    KayakPOM.prototype.clickDestination = function () {
+        this.destination.click();
     };
     KayakPOM.prototype.isDestinationDisplayed = function () {
         return this.destination.isDisplayed();
@@ -192,6 +195,96 @@ var KayakPOM = /** @class */ (function () {
     };
     KayakPOM.prototype.clickSearchBtn = function () {
         this.searchBtn.click();
+    };
+    KayakPOM.prototype.setCheapestPrice = function () {
+        return this.cheapestPrice = protractor_1.element(protractor_1.by.xpath("//*[contains(@id,'tabs')]/a[1]/div/div/div/div[2]/span[1]"));
+    };
+    KayakPOM.prototype.getCheapestPrice = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.cheapestPrice.getText()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    KayakPOM.prototype.setCheapestTime = function () {
+        this.cheapestTime = protractor_1.element(protractor_1.by.xpath("//*[contains(@id,'tabs')]/a[1]/div/div/div/div[2]/span[2]"));
+    };
+    KayakPOM.prototype.getCheapestTime = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.cheapestPrice.getText()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    KayakPOM.prototype.setBestPrice = function () {
+        this.bestPrice = protractor_1.element(protractor_1.by.xpath("//*[contains(@id,'tabs')]/a[2]/div/div/div/div[2]/span[1]"));
+    };
+    KayakPOM.prototype.getBestPrice = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.bestPrice.getText()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    KayakPOM.prototype.setBestTime = function () {
+        this.bestTime = protractor_1.element(protractor_1.by.xpath("//*[contains(@id,'tabs')]/a[2]/div/div/div/div[2]/span[2]"));
+    };
+    KayakPOM.prototype.getBestTime = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.bestTime.getText()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    KayakPOM.prototype.setQuickestTime = function () {
+        this.quickestTime = protractor_1.element(protractor_1.by.xpath("//*[contains(@id,'tabs')]/a[3]/div/div/div/div[2]/span[2]"));
+    };
+    KayakPOM.prototype.getQuickestTime = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.quickestTime.getText()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    KayakPOM.prototype.setQuickestPrice = function () {
+        this.quickestPrice = protractor_1.element(protractor_1.by.xpath("//*[contains(@id,'tabs')]/a[3]/div/div/div/div[2]/span[1]"));
+    };
+    KayakPOM.prototype.getQuickestPrice = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.quickestPrice.getText()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    KayakPOM.prototype.setDestinationAirport = function () {
+        this.destinationAirport = protractor_1.element(protractor_1.by.xpath("//input[contains(@id,'destination-airport')]"));
+    };
+    KayakPOM.prototype.sendDestinationAirportValue = function (value) {
+        this.destinationAirport.sendKeys(value);
+    };
+    KayakPOM.prototype.setDestinationOpt = function () {
+        this.destinationOpt = protractor_1.element(protractor_1.by.xpath("//div[contains(@id,'destination-airport-smartbox-dropdown')]/ul/li[1]"));
+    };
+    KayakPOM.prototype.clickDestinationOpt = function () {
+        this.destinationOpt.click();
     };
     return KayakPOM;
 }());

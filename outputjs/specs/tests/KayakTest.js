@@ -38,6 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var protractor_1 = require("protractor");
+// import { BrowserStack } from "protractor/built/driverProviders"
 var KayakPOM = require('../pages/KayakPOM');
 describe('Kayak Flight Test', function () {
     beforeEach(function () {
@@ -46,223 +47,176 @@ describe('Kayak Flight Test', function () {
         KayakPOM.setFlightTab();
         KayakPOM.clickFlightTab();
     });
-    it('Test Origin Exist', function () {
-        KayakPOM.setOrigin();
-        KayakPOM.isOriginDisplayed();
-    });
-    it('Test Destination Exist', function () {
-        KayakPOM.setDestination();
-        KayakPOM.isDestinationDisplayed();
-    });
-    it('Test Departure Field Exist', function () {
-        KayakPOM.setDepartureDate();
-        KayakPOM.isDepartureDateDisplayed();
-    });
-    it('Test Return Field Exist', function () {
-        KayakPOM.setReturnDate();
-        KayakPOM.isReturnDateDisplayed();
-    });
-    it('Trip Type Test', function () {
+    // it('Test Origin Exist', function(){
+    //     KayakPOM.setOrigin()
+    //     KayakPOM.isOriginDisplayed()
+    // })
+    // it('Test Destination Exist', function(){
+    //     KayakPOM.setDestination()
+    //     KayakPOM.isDestinationDisplayed()
+    // })
+    // it('Test Departure Field Exist',function(){
+    //     KayakPOM.setDepartureDate()
+    //     KayakPOM.isDepartureDateDisplayed()
+    // })
+    // it('Test Return Field Exist',function(){
+    //     KayakPOM.setReturnDate()
+    //     KayakPOM.isReturnDateDisplayed()
+    // })
+    // it('Trip Type Test', async function(){
+    //     KayakPOM.setTripType()
+    //     let result = await KayakPOM.getTripTypeDataAttribute()
+    //     expect(result).toBe('roundtrip')    
+    // })
+    // it('Set Trip Type Oneway Test',async function(){
+    //     KayakPOM.setTripType()
+    //     KayakPOM.tripType.click()
+    //     KayakPOM.setOneway()
+    //     KayakPOM.clickOneway()
+    //     let result = await KayakPOM.getTripTypeDataAttribute()
+    //     expect(result).toBe('oneway')
+    // })
+    // it('Set Trip Type Multi-City Test', async function(){
+    //     KayakPOM.setTripType()
+    //     KayakPOM.clickTripType()
+    //     KayakPOM.setMultiCity()
+    //     KayakPOM.clickMultiCity()
+    //     let result = await KayakPOM.getTripTypeDataAttribute()
+    //     expect(result).toBe('multicity')
+    // })
+    // it('Set Trip Type Round Trip Test', async function(){
+    //     KayakPOM.setTripType()
+    //     KayakPOM.clickTripType() 
+    //     KayakPOM.setRoundTrip()
+    //     KayakPOM.clickRoundTrip()   
+    //     let result = await KayakPOM.getTripTypeDataAttribute()
+    //     expect(result).toBe('roundtrip')
+    // })
+    // it("Adult Count Test", async function(){
+    //     KayakPOM.setTravelerInfo()
+    //     KayakPOM.clickTravelerInfo()
+    //     KayakPOM.setAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.setAdultCountError()
+    //     let result = await KayakPOM.getAdultCountError()
+    //     expect(result).toBe('Searches cannot have more than 9 adults')
+    //     browser.sleep(3000)
+    // })
+    // it('Origin Test PAR', async function(){
+    //     browser.sleep(1000)
+    //     KayakPOM.setOriginCancelBtn()
+    //     KayakPOM.clickOriginCancelBtn()
+    //     browser.sleep(1000)
+    //     KayakPOM.setOriginAirport()
+    //     KayakPOM.sendOriginText('PAR')
+    //     browser.sleep(1000)
+    //     KayakPOM.setOriginOpt()
+    //     KayakPOM.clickOriginOpt()
+    //     browser.sleep(1000)
+    //     KayakPOM.setOrigin()
+    //     let result = await KayakPOM.getOriginValue()
+    //     expect(result).toBe('PAR')
+    // })
+    // it('Origin Test NYC', async function(){
+    //     browser.sleep(1000)
+    //     KayakPOM.setOriginCancelBtn()
+    //     KayakPOM.clickOriginCancelBtn()
+    //     browser.sleep(1000)
+    //     KayakPOM.setOriginAirport()
+    //     KayakPOM.sendOriginText('NYC')
+    //     browser.sleep(1000)
+    //     KayakPOM.setOriginOpt()
+    //     KayakPOM.clickOriginOpt()
+    //     browser.sleep(1000)
+    //     KayakPOM.setOrigin()
+    //     let result = await KayakPOM.getOriginValue()
+    //     expect(result).toBe('NYC')
+    // })
+    // it('Travel Label Test', async function(){
+    //     KayakPOM.setTravelerInfo()
+    //     KayakPOM.clickTravelerInfo()
+    //     KayakPOM.setAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     browser.sleep(1000)
+    //     KayakPOM.setTravelLabel()
+    //     let result = await KayakPOM.getTravelLabelValue()
+    //     expect(result).toBe('4 Travelers')
+    // })
+    // //Step 9
+    // it('Travel Label Test', async function(){
+    //     KayakPOM.setTravelerInfo()
+    //     KayakPOM.clickTravelerInfo()
+    //     KayakPOM.setAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.clickAdultCountIncreaseBtn()
+    //     KayakPOM.setChildIncreaseBtn()
+    //     KayakPOM.clickChildIcreaseBtn()
+    //     KayakPOM.clickChildIcreaseBtn()
+    //     browser.sleep(1000)
+    //     KayakPOM.setTravelLabel()
+    //     let result = await KayakPOM.getTravelLabelValue()
+    //     expect(result).toBe('6 Travelers')
+    // })
+    //step 13
+    it('Check Cheap Best Quick', function () {
         return __awaiter(this, void 0, void 0, function () {
-            var result;
+            var e;
+            var _this = this;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        KayakPOM.setTripType();
-                        return [4 /*yield*/, KayakPOM.getTripTypeDataAttribute()];
-                    case 1:
-                        result = _a.sent();
-                        expect(result).toBe('roundtrip');
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
-    it('Set Trip Type Oneway Test', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        KayakPOM.setTripType();
-                        KayakPOM.tripType.click();
-                        KayakPOM.setOneway();
-                        KayakPOM.clickOneway();
-                        return [4 /*yield*/, KayakPOM.getTripTypeDataAttribute()];
-                    case 1:
-                        result = _a.sent();
-                        expect(result).toBe('oneway');
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
-    it('Set Trip Type Multi-City Test', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        KayakPOM.setTripType();
-                        KayakPOM.clickTripType();
-                        KayakPOM.setMultiCity();
-                        KayakPOM.clickMultiCity();
-                        return [4 /*yield*/, KayakPOM.getTripTypeDataAttribute()];
-                    case 1:
-                        result = _a.sent();
-                        expect(result).toBe('multicity');
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
-    it('Set Trip Type Round Trip Test', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        KayakPOM.setTripType();
-                        KayakPOM.clickTripType();
-                        KayakPOM.setRoundTrip();
-                        KayakPOM.clickRoundTrip();
-                        return [4 /*yield*/, KayakPOM.getTripTypeDataAttribute()];
-                    case 1:
-                        result = _a.sent();
-                        expect(result).toBe('roundtrip');
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
-    it("Adult Count Test", function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        KayakPOM.setTravelerInfo();
-                        KayakPOM.clickTravelerInfo();
-                        KayakPOM.setAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.setAdultCountError();
-                        return [4 /*yield*/, KayakPOM.getAdultCountError()];
-                    case 1:
-                        result = _a.sent();
-                        expect(result).toBe('Searches cannot have more than 9 adults');
-                        protractor_1.browser.sleep(3000);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
-    it('Origin Test PAR', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setOriginCancelBtn();
-                        KayakPOM.clickOriginCancelBtn();
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setOriginAirport();
-                        KayakPOM.sendOriginText('PAR');
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setOriginOpt();
-                        KayakPOM.clickOriginOpt();
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setOrigin();
-                        return [4 /*yield*/, KayakPOM.getOriginValue()];
-                    case 1:
-                        result = _a.sent();
-                        expect(result).toBe('PAR');
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
-    it('Origin Test NYC', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setOriginCancelBtn();
-                        KayakPOM.clickOriginCancelBtn();
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setOriginAirport();
-                        KayakPOM.sendOriginText('NYC');
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setOriginOpt();
-                        KayakPOM.clickOriginOpt();
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setOrigin();
-                        return [4 /*yield*/, KayakPOM.getOriginValue()];
-                    case 1:
-                        result = _a.sent();
-                        expect(result).toBe('NYC');
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
-    it('Travel Label Test', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        KayakPOM.setTravelerInfo();
-                        KayakPOM.clickTravelerInfo();
-                        KayakPOM.setAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setTravelLabel();
-                        return [4 /*yield*/, KayakPOM.getTravelLabelValue()];
-                    case 1:
-                        result = _a.sent();
-                        expect(result).toBe('4 Travelers');
-                        return [2 /*return*/];
-                }
-            });
-        });
-    });
-    //Step 9
-    it('Travel Label Test', function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        KayakPOM.setTravelerInfo();
-                        KayakPOM.clickTravelerInfo();
-                        KayakPOM.setAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.clickAdultCountIncreaseBtn();
-                        KayakPOM.setChildIncreaseBtn();
-                        KayakPOM.clickChildIcreaseBtn();
-                        KayakPOM.clickChildIcreaseBtn();
-                        protractor_1.browser.sleep(1000);
-                        KayakPOM.setTravelLabel();
-                        return [4 /*yield*/, KayakPOM.getTravelLabelValue()];
-                    case 1:
-                        result = _a.sent();
-                        expect(result).toBe('6 Travelers');
-                        return [2 /*return*/];
-                }
+                // browser.sleep(2000)
+                KayakPOM.setDestination();
+                KayakPOM.clickDestination();
+                protractor_1.browser.sleep(1000);
+                KayakPOM.setDestinationAirport();
+                KayakPOM.sendDestinationAirportValue('Paris (PAR)');
+                protractor_1.browser.sleep(2000);
+                KayakPOM.setDestinationOpt();
+                KayakPOM.clickDestinationOpt();
+                protractor_1.browser.sleep(1000);
+                KayakPOM.setSearchBtn();
+                KayakPOM.clickSearchBtn();
+                e = KayakPOM.setCheapestPrice();
+                protractor_1.browser.wait(protractor_1.ExpectedConditions.presenceOf(e), 50000).then(function () { return __awaiter(_this, void 0, void 0, function () {
+                    var cheapestPrice, cheapestPriceResult, bestPrice, bestPriceResult, quickestPrice, quickestPriceResult;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                protractor_1.browser.sleep(6000);
+                                return [4 /*yield*/, KayakPOM.getCheapestPrice()];
+                            case 1:
+                                cheapestPrice = _a.sent();
+                                cheapestPriceResult = parseInt(cheapestPrice.slice(1));
+                                KayakPOM.setBestPrice();
+                                return [4 /*yield*/, KayakPOM.getBestPrice()];
+                            case 2:
+                                bestPrice = _a.sent();
+                                bestPriceResult = parseInt(bestPrice.slice(1));
+                                KayakPOM.setQuickestPrice();
+                                return [4 /*yield*/, KayakPOM.getQuickestPrice()];
+                            case 3:
+                                quickestPrice = _a.sent();
+                                quickestPriceResult = parseInt(quickestPrice.slice(1));
+                                protractor_1.browser.sleep(2000);
+                                console.log('cheapestPrice=> ', cheapestPriceResult);
+                                console.log('bestPrice=> ', bestPriceResult);
+                                console.log('quickestPrice', quickestPriceResult);
+                                expect(cheapestPriceResult < bestPriceResult && cheapestPriceResult < quickestPriceResult).toBeTruthy();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [2 /*return*/];
             });
         });
     });
