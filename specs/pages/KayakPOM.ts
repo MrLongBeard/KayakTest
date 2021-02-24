@@ -44,17 +44,15 @@ class KayakPOM {
     this.flightTab.click();
   }
   setOrigin() {
-    // this.origin = element(by.xpath("//*[@class='col _i0B _iac _iad _iae _iaa _iab _iys _iyv _iaW _iaX _iaY _iyq _iaS _iaU _iAU _iaV _iAV _izh _iaR _h-8 _ize']/div/div/input"))
     return this.origin = element(by.xpath("//div[contains(@id,'origin-airport-display')]"));
   }
   async isOriginDisplayed() {
     return await this.origin.isDisplayed();
   }
   async getOriginValue(){
-      return await this.origin.getAttribute('value')
+      return await element(by.xpath("//div[contains(@id,'origin-airport-display-multi-container')]/div")).getAttribute('data-value') //this.origin.getAttribute('value')
   }
   setDestination() {
-    // this.destination = element(by.xpath("//*[@class='keel-grid _icA _ica _icB _icb _icC _iyY _icc _iaA _icD _ib9 _iy1 _iAO _iaO _iaP _iyF _iAN']/div[3]/div/input"))
     this.destination = element(by.xpath("//div[contains(@id,'destination-airport-display')]"));
   }
   clickDestination(){
@@ -84,9 +82,10 @@ class KayakPOM {
     return await this.returnDate.isDisplayed();
   }
   setTripType() {
-    return (this.tripType = element(
-      by.xpath("//*[contains(@id,'switch-display-status')]")
-    ));
+    this.tripType = element(
+        by.xpath("//*[contains(@id,'switch-display-status')]")
+      )
+    return this.tripType
   }
   async getTripTypeDataAttribute() {
     return await this.tripType.getAttribute("data-value");

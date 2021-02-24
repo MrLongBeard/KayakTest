@@ -50,7 +50,6 @@ var KayakPOM = /** @class */ (function () {
         this.flightTab.click();
     };
     KayakPOM.prototype.setOrigin = function () {
-        // this.origin = element(by.xpath("//*[@class='col _i0B _iac _iad _iae _iaa _iab _iys _iyv _iaW _iaX _iaY _iyq _iaS _iaU _iAU _iaV _iAV _izh _iaR _h-8 _ize']/div/div/input"))
         return this.origin = protractor_1.element(protractor_1.by.xpath("//div[contains(@id,'origin-airport-display')]"));
     };
     KayakPOM.prototype.isOriginDisplayed = function () {
@@ -67,14 +66,13 @@ var KayakPOM = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.origin.getAttribute('value')];
-                    case 1: return [2 /*return*/, _a.sent()];
+                    case 0: return [4 /*yield*/, protractor_1.element(protractor_1.by.xpath("//div[contains(@id,'origin-airport-display-multi-container')]/div")).getAttribute('data-value')]; //this.origin.getAttribute('value')
+                    case 1: return [2 /*return*/, _a.sent()]; //this.origin.getAttribute('value')
                 }
             });
         });
     };
     KayakPOM.prototype.setDestination = function () {
-        // this.destination = element(by.xpath("//*[@class='keel-grid _icA _ica _icB _icb _icC _iyY _icc _iaA _icD _ib9 _iy1 _iAO _iaO _iaP _iyF _iAN']/div[3]/div/input"))
         this.destination = protractor_1.element(protractor_1.by.xpath("//div[contains(@id,'destination-airport-display')]"));
     };
     KayakPOM.prototype.clickDestination = function () {
@@ -117,7 +115,8 @@ var KayakPOM = /** @class */ (function () {
         });
     };
     KayakPOM.prototype.setTripType = function () {
-        return (this.tripType = protractor_1.element(protractor_1.by.xpath("//*[contains(@id,'switch-display-status')]")));
+        this.tripType = protractor_1.element(protractor_1.by.xpath("//*[contains(@id,'switch-display-status')]"));
+        return this.tripType;
     };
     KayakPOM.prototype.getTripTypeDataAttribute = function () {
         return __awaiter(this, void 0, void 0, function () {

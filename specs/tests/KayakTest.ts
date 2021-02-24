@@ -8,8 +8,8 @@ describe('Kayak Flight Test', function(){
         KayakPOM.setFlightTab()
         KayakPOM.clickFlightTab()
     })
-    //step 1
-    it('Test Origin Exist', async function(){
+    // //step 1
+    it('Test Fields Exist', async function(){
         KayakPOM.setOrigin()
         const originResult = await KayakPOM.isOriginDisplayed()
         KayakPOM.setDestination()
@@ -28,7 +28,7 @@ describe('Kayak Flight Test', function(){
     //step 2
     it('Set Trip Type Oneway Test',async function(){
         KayakPOM.setTripType()
-        KayakPOM.tripType.click()
+        KayakPOM.clickTripType()
         KayakPOM.setOneway()
         KayakPOM.clickOneway()
         let result = await KayakPOM.getTripTypeDataAttribute()
@@ -79,6 +79,7 @@ describe('Kayak Flight Test', function(){
         browser.sleep(1000)
         KayakPOM.setOrigin()
         let result = await KayakPOM.getOriginValue()
+        console.log('result=> ',result)
         expect(result).toBe('PAR')
     })
     //step 7
