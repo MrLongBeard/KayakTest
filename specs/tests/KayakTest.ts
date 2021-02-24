@@ -1,8 +1,4 @@
-// import {KayakPOM} from '../pages/KayakPOM'
-
-import { parse } from "path"
 import { browser, element, by, ExpectedConditions } from "protractor"
-// import { BrowserStack } from "protractor/built/driverProviders"
 
 const KayakPOM = require('../pages/KayakPOM')
 describe('Kayak Flight Test', function(){
@@ -12,27 +8,24 @@ describe('Kayak Flight Test', function(){
         KayakPOM.setFlightTab()
         KayakPOM.clickFlightTab()
     })
-    it('Test Origin Exist', function(){
+    //step 1
+    it('Test Origin Exist', async function(){
         KayakPOM.setOrigin()
-        KayakPOM.isOriginDisplayed()
-    })
-    it('Test Destination Exist', function(){
+        const originResult = await KayakPOM.isOriginDisplayed()
         KayakPOM.setDestination()
-        KayakPOM.isDestinationDisplayed()
-    })
-    it('Test Departure Field Exist',function(){
+        const destinationResult = await KayakPOM.isDestinationDisplayed()
         KayakPOM.setDepartureDate()
-        KayakPOM.isDepartureDateDisplayed()
-    })
-    it('Test Return Field Exist',function(){
+        const departureDateResult = await KayakPOM.isDepartureDateDisplayed()
         KayakPOM.setReturnDate()
-        KayakPOM.isReturnDateDisplayed()
+        const returnDateResult = await KayakPOM.isReturnDateDisplayed()
+        expect(originResult && destinationResult && departureDateResult && returnDateResult).toBeTruthy()
     })
     it('Trip Type Test', async function(){
         KayakPOM.setTripType()
         let result = await KayakPOM.getTripTypeDataAttribute()
         expect(result).toBe('roundtrip')    
     })
+    //step 2
     it('Set Trip Type Oneway Test',async function(){
         KayakPOM.setTripType()
         KayakPOM.tripType.click()
@@ -41,6 +34,7 @@ describe('Kayak Flight Test', function(){
         let result = await KayakPOM.getTripTypeDataAttribute()
         expect(result).toBe('oneway')
     })
+    //step 3
     it('Set Trip Type Multi-City Test', async function(){
         KayakPOM.setTripType()
         KayakPOM.clickTripType()
@@ -49,6 +43,7 @@ describe('Kayak Flight Test', function(){
         let result = await KayakPOM.getTripTypeDataAttribute()
         expect(result).toBe('multicity')
     })
+    //step 4
     it('Set Trip Type Round Trip Test', async function(){
         KayakPOM.setTripType()
         KayakPOM.clickTripType() 
@@ -57,24 +52,20 @@ describe('Kayak Flight Test', function(){
         let result = await KayakPOM.getTripTypeDataAttribute()
         expect(result).toBe('roundtrip')
     })
+    // step 5
     it("Adult Count Test", async function(){
         KayakPOM.setTravelerInfo()
         KayakPOM.clickTravelerInfo()
         KayakPOM.setAdultCountIncreaseBtn()
-        KayakPOM.clickAdultCountIncreaseBtn()
-        KayakPOM.clickAdultCountIncreaseBtn()
-        KayakPOM.clickAdultCountIncreaseBtn()
-        KayakPOM.clickAdultCountIncreaseBtn()
-        KayakPOM.clickAdultCountIncreaseBtn()
-        KayakPOM.clickAdultCountIncreaseBtn()
-        KayakPOM.clickAdultCountIncreaseBtn()
-        KayakPOM.clickAdultCountIncreaseBtn()
-        KayakPOM.clickAdultCountIncreaseBtn()
+        Array.from(new Array(9),()=>{
+            KayakPOM.clickAdultCountIncreaseBtn()
+        })
         KayakPOM.setAdultCountError()
         let result = await KayakPOM.getAdultCountError()
         expect(result).toBe('Searches cannot have more than 9 adults')
-        browser.sleep(3000)
     })
+    //Search Flow
+    //Step 6
     it('Origin Test PAR', async function(){
         browser.sleep(1000)
         KayakPOM.setOriginCancelBtn()
@@ -90,21 +81,20 @@ describe('Kayak Flight Test', function(){
         let result = await KayakPOM.getOriginValue()
         expect(result).toBe('PAR')
     })
+    //step 7
     it('Origin Test NYC', async function(){
+        KayakPOM.setDestination()
+        KayakPOM.clickDestination()
         browser.sleep(1000)
-        KayakPOM.setOriginCancelBtn()
-        KayakPOM.clickOriginCancelBtn()
-        browser.sleep(1000)
-        KayakPOM.setOriginAirport()
-        KayakPOM.sendOriginText('NYC')
-        browser.sleep(1000)
-        KayakPOM.setOriginOpt()
-        KayakPOM.clickOriginOpt()
-        browser.sleep(1000)
-        KayakPOM.setOrigin()
-        let result = await KayakPOM.getOriginValue()
-        expect(result).toBe('NYC')
+        KayakPOM.setDestinationAirport()
+        KayakPOM.sendDestinationAirportValue('Paris (PAR)')
+        browser.sleep(2000)
+        KayakPOM.setDestinationOpt()
+        KayakPOM.clickDestinationOpt()
+        const destinationAirport = await KayakPOM.getDestinationAirportValue()
+        expect(destinationAirport).toBe('Paris (PAR)')
     })
+    ////step 8
     it('Travel Label Test', async function(){
         KayakPOM.setTravelerInfo()
         KayakPOM.clickTravelerInfo()
@@ -117,7 +107,7 @@ describe('Kayak Flight Test', function(){
         let result = await KayakPOM.getTravelLabelValue()
         expect(result).toBe('4 Travelers')
     })
-    //Step 9
+    // //Step 9
     it('Travel Label Test', async function(){
         KayakPOM.setTravelerInfo()
         KayakPOM.clickTravelerInfo()
@@ -134,34 +124,76 @@ describe('Kayak Flight Test', function(){
         expect(result).toBe('6 Travelers')
     })
     //step 13
-    it('Check Cheap Best Quick', async function(){
+    it('Complete Search Flow', async function(){
+        //step 6
+        browser.sleep(1000)
+        KayakPOM.setOriginCancelBtn()
+        KayakPOM.clickOriginCancelBtn()
+        browser.sleep(1000)
+        KayakPOM.setOriginAirport()
+        KayakPOM.sendOriginText('PAR')
+        browser.sleep(1000)
+        KayakPOM.setOriginOpt()
+        KayakPOM.clickOriginOpt()
+        //step 7
         KayakPOM.setDestination()
         KayakPOM.clickDestination()
         browser.sleep(1000)
         KayakPOM.setDestinationAirport()
-        KayakPOM.sendDestinationAirportValue('Paris (PAR)')
+        KayakPOM.sendDestinationAirportValue('NYC')
         browser.sleep(2000)
         KayakPOM.setDestinationOpt()
         KayakPOM.clickDestinationOpt()
         browser.sleep(1000)
+        //step 8
+        KayakPOM.setTravelerInfo()
+        KayakPOM.clickTravelerInfo()
+        KayakPOM.setAdultCountIncreaseBtn()
+        KayakPOM.clickAdultCountIncreaseBtn()
+        KayakPOM.clickAdultCountIncreaseBtn()
+        KayakPOM.clickAdultCountIncreaseBtn()
+        browser.sleep(1000)
+        //step 9
+        KayakPOM.setChildIncreaseBtn()
+        KayakPOM.clickChildIcreaseBtn()
+        KayakPOM.clickChildIcreaseBtn()
+        
+        //step 13
         KayakPOM.setSearchBtn()
         KayakPOM.clickSearchBtn()
         let e = KayakPOM.setCheapestPrice()
-        browser.wait(ExpectedConditions.presenceOf(e),50000).then(async ()=>{
-            browser.sleep(6000)
+        browser.wait(ExpectedConditions.presenceOf(e),6000).then(async ()=>{
+            browser.sleep(10000)
             let cheapestPrice :string = await KayakPOM.getCheapestPrice()
             const cheapestPriceResult:Number = parseInt(cheapestPrice.slice(1,))
+            console.log('cheapestPriceResult=> ',cheapestPriceResult)
             KayakPOM.setBestPrice()
             const bestPrice:string = await KayakPOM.getBestPrice()
             const bestPriceResult:Number = parseInt(bestPrice.slice(1,))
+            console.log('bestPriceResult=> ',bestPriceResult)
             KayakPOM.setQuickestPrice()
             const quickestPrice:string = await KayakPOM.getQuickestPrice()
             const quickestPriceResult = parseInt(quickestPrice.slice(1,))
-            browser.sleep(2000)
-            console.log('cheapestPrice=> ',cheapestPriceResult)
-            console.log('bestPrice=> ',bestPriceResult)
-            console.log('quickestPrice',quickestPriceResult)
-            expect(cheapestPriceResult < bestPriceResult && cheapestPriceResult < quickestPriceResult).toBeTruthy()
+            console.log('quickestPriceResult=> ',quickestPriceResult)
+            KayakPOM.setCheapestTime()
+            let cheapestTime: string = await KayakPOM.getCheapestTime()
+            const cheapestTimeSeconds = durationToSeconds(cheapestTime)
+            console.log('cheapestTimeSeconds=> ',cheapestTimeSeconds)
+            KayakPOM.setBestTime()
+            const bestTime:string = await KayakPOM.getBestTime()
+            const bestTimeSeconds = durationToSeconds(bestTime)
+            console.log('bestTimeSeconds=> ',bestTimeSeconds)
+            KayakPOM.setQuickestTime()
+            const quickestTime:string = await KayakPOM.getQuickestTime()
+            const quickestTimeSeconds = durationToSeconds(quickestTime)
+            console.log('quickestTimeSeconds=> ',quickestTimeSeconds)
+            browser.sleep(5000)
+            expect(cheapestPriceResult <= bestPriceResult && cheapestPriceResult < quickestPriceResult && quickestTimeSeconds <= bestTimeSeconds && quickestTimeSeconds < cheapestTimeSeconds).toBeTruthy()
         })
     })
 })
+function durationToSeconds(time:string){
+    let hrs = parseInt(time.split(' ')[0].slice(0,2))
+    let mins = parseInt(time.split(' ')[1].slice(0,2))
+    return (hrs*60*60+mins*60)
+}

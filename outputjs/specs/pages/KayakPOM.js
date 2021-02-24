@@ -51,10 +51,17 @@ var KayakPOM = /** @class */ (function () {
     };
     KayakPOM.prototype.setOrigin = function () {
         // this.origin = element(by.xpath("//*[@class='col _i0B _iac _iad _iae _iaa _iab _iys _iyv _iaW _iaX _iaY _iyq _iaS _iaU _iAU _iaV _iAV _izh _iaR _h-8 _ize']/div/div/input"))
-        return this.origin = protractor_1.element(protractor_1.by.name("origincode"));
+        return this.origin = protractor_1.element(protractor_1.by.xpath("//div[contains(@id,'origin-airport-display')]"));
     };
     KayakPOM.prototype.isOriginDisplayed = function () {
-        return this.origin.isDisplayed();
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.origin.isDisplayed()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     KayakPOM.prototype.getOriginValue = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -74,19 +81,40 @@ var KayakPOM = /** @class */ (function () {
         this.destination.click();
     };
     KayakPOM.prototype.isDestinationDisplayed = function () {
-        return this.destination.isDisplayed();
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.destination.isDisplayed()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     KayakPOM.prototype.setDepartureDate = function () {
         this.departureDate = protractor_1.element(protractor_1.by.xpath("//*[@class='Common-Widgets-Datepicker-DateModal _ibU _ibV _iaf _idE _h-Y _im4 _iai _ihz _j0g _jy1 _iDB']/div[1]"));
     };
     KayakPOM.prototype.isDepartureDateDisplayed = function () {
-        return this.departureDate.isDisplayed();
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.departureDate.isDisplayed()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     KayakPOM.prototype.setReturnDate = function () {
         this.returnDate = protractor_1.element(protractor_1.by.xpath("//*[@class='Common-Widgets-Datepicker-DateModal _ibU _ibV _iaf _idE _h-Y _im4 _iai _ihz _j0g _jy1 _iDB']/div[3]"));
     };
     KayakPOM.prototype.isReturnDateDisplayed = function () {
-        return this.returnDate.isDisplayed();
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.returnDate.isDisplayed()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     KayakPOM.prototype.setTripType = function () {
         return (this.tripType = protractor_1.element(protractor_1.by.xpath("//*[contains(@id,'switch-display-status')]")));
@@ -216,7 +244,7 @@ var KayakPOM = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.cheapestPrice.getText()];
+                    case 0: return [4 /*yield*/, this.cheapestTime.getText()];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -276,6 +304,16 @@ var KayakPOM = /** @class */ (function () {
     };
     KayakPOM.prototype.setDestinationAirport = function () {
         this.destinationAirport = protractor_1.element(protractor_1.by.xpath("//input[contains(@id,'destination-airport')]"));
+    };
+    KayakPOM.prototype.getDestinationAirportValue = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.destinationAirport.getAttribute('value')];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     KayakPOM.prototype.sendDestinationAirportValue = function (value) {
         this.destinationAirport.sendKeys(value);

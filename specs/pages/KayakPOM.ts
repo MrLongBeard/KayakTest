@@ -45,10 +45,10 @@ class KayakPOM {
   }
   setOrigin() {
     // this.origin = element(by.xpath("//*[@class='col _i0B _iac _iad _iae _iaa _iab _iys _iyv _iaW _iaX _iaY _iyq _iaS _iaU _iAU _iaV _iAV _izh _iaR _h-8 _ize']/div/div/input"))
-    return this.origin = element(by.name("origincode"));
+    return this.origin = element(by.xpath("//div[contains(@id,'origin-airport-display')]"));
   }
-  isOriginDisplayed() {
-    return this.origin.isDisplayed();
+  async isOriginDisplayed() {
+    return await this.origin.isDisplayed();
   }
   async getOriginValue(){
       return await this.origin.getAttribute('value')
@@ -60,8 +60,8 @@ class KayakPOM {
   clickDestination(){
       this.destination.click()
   }
-  isDestinationDisplayed() {
-    return this.destination.isDisplayed();
+  async isDestinationDisplayed() {
+    return await this.destination.isDisplayed();
   }
   setDepartureDate() {
     this.departureDate = element(
@@ -70,8 +70,8 @@ class KayakPOM {
       )
     );
   }
-  isDepartureDateDisplayed() {
-    return this.departureDate.isDisplayed();
+  async isDepartureDateDisplayed() {
+    return await this.departureDate.isDisplayed();
   }
   setReturnDate() {
     this.returnDate = element(
@@ -80,8 +80,8 @@ class KayakPOM {
       )
     );
   }
-  isReturnDateDisplayed() {
-    return this.returnDate.isDisplayed();
+  async isReturnDateDisplayed() {
+    return await this.returnDate.isDisplayed();
   }
   setTripType() {
     return (this.tripType = element(
@@ -192,7 +192,7 @@ class KayakPOM {
       this.cheapestTime = element(by.xpath("//*[contains(@id,'tabs')]/a[1]/div/div/div/div[2]/span[2]"))
   }
   async getCheapestTime(){
-    return await this.cheapestPrice.getText()
+    return await this.cheapestTime.getText()
   }
   setBestPrice(){
       this.bestPrice = element(by.xpath("//*[contains(@id,'tabs')]/a[2]/div/div/div/div[2]/span[1]"))
@@ -220,6 +220,9 @@ class KayakPOM {
   }
   setDestinationAirport(){
       this.destinationAirport = element(by.xpath("//input[contains(@id,'destination-airport')]"))
+  }
+  async getDestinationAirportValue(){
+      return await this.destinationAirport.getAttribute('value')
   }
   sendDestinationAirportValue(value:string){
     this.destinationAirport.sendKeys(value)
